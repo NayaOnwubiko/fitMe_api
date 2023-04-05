@@ -42,5 +42,58 @@ router.post("/login", (req, res) => {
                 })
             }
 
+            /*
+                -Credentials are valid
+                -200 { token: jwtToken } -> how to generate the JWT?
+                -Install jsonwebtoken, jwt.sign( payloadObject, SECRET_KEY);
+                -Respond with the created JWT
+            */
+            
+            const token = jwt.sign({ id: foundUser.id }, process.env.JWT_SECRET_KEY);
+
+            res.json({
+                message: "Successfully logged in",
+                token: token
+            })
         })
+});
+
+router.post("/signup", async (req, res) => {
+    const { name, email, password } = req.body;
+
+    if (!email || !password || !name) {
+        return res.status(400).json({ error: "Sign up requires email and password fields"});
+    }
+
+    const foundUsers = await knex("user")
+        .where({ email: email});
+
+    if (foundUsers.length === 1) {
+        //user not found
+        return res.status(400).json({ error: "User account with this email already exists"});
+    }
+
+    const hashedPassword = bcrypt.hashSync(password, Number(process.env.BRYCPT_SALT_ROUNDS));
+
+    const newUserIds = await knex("user")
+        .insert({
+            name,
+            email,
+            password: hashedPassword
+        });
+    const newUserId = newUserIds[0];
+
+    const newUsers = await knex("user")
+        .where({ id: newUserId });
+    
+    const newUser = newUsers[0];
+
+    const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET_KEY);
+
+    res.json({ 
+        message: "Successfully logged in",
+        token
+    })
 })
+
+module.exports = router;
