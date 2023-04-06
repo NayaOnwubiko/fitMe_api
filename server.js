@@ -12,7 +12,7 @@ app.use(cors({ origin: CLIENT_URL }));
 const userRoutes = require('./routes/user-routes');
 const scheduleRoutes = require('./routes/schedule-routes');
 
-app.use("/", userRoutes);
+app.use("/users", userRoutes);
 app.use("/schedule", scheduleRoutes);
 
 app.listen(PORT, () => {
