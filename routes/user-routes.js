@@ -23,7 +23,7 @@ router.post("/login", (req, res) => {
         })
     }
 
-    knex("user")
+    knex("users")
         .where({ email: req.body.email })
         .then(users => {
             if (users.length !==1) {
@@ -59,13 +59,13 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, vegetarian, difficulty } = req.body;
 
     if (!email || !password || !name) {
         return res.status(400).json({ error: "Sign up requires email and password fields"});
     }
 
-    const foundUsers = await knex("user")
+    const foundUsers = await knex("users")
         .where({ email: email});
 
     if (foundUsers.length === 1) {
@@ -75,15 +75,17 @@ router.post("/signup", async (req, res) => {
 
     const hashedPassword = bcrypt.hashSync(password, Number(process.env.BRYCPT_SALT_ROUNDS));
 
-    const newUserIds = await knex("user")
+    const newUserIds = await knex("users")
         .insert({
             name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            vegetarian,
+            difficulty
         });
     const newUserId = newUserIds[0];
 
-    const newUsers = await knex("user")
+    const newUsers = await knex("users")
         .where({ id: newUserId });
     
     const newUser = newUsers[0];
@@ -94,6 +96,27 @@ router.post("/signup", async (req, res) => {
         message: "Successfully logged in",
         token
     })
-})
+});
+
+router.get("/user-profile", (req, res) => {
+    
+    knex("users")
+        .select(
+          "id" ,
+          "name",
+          "difficulty",
+          "vegetarian"
+        )
+        .where({ email: req.body.email })
+        .then((data) => {
+            res.status(200).json(data);
+        })
+        .catch((error) => {
+            return res.status(400).json({
+                message: "There was an issue retrieving the profile",
+                error,
+            })
+        })
+});
 
 module.exports = router;
