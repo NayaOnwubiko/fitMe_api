@@ -12,4 +12,8 @@ router
     .route('/login')
     .post(usersController.login);
 
+router
+    .route('/currentuser')
+    .get(authorize, usersController.approve);
+
 module.exports = router;

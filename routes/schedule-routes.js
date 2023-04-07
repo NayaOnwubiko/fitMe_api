@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router();
-require('dotenv').config();
-const authorize = require('../middleware/authorize');
-const knex = require('knex')(require('../knexfile'));
+const scheduleController = require('../controllers/scheduleController');
 
-/*
-    Response:
-        -200 [schedule] for meals and exercise
-*/
+router
+    .route('/meals')
+    .get(scheduleController.getAllMeals);
 
-router.get("/", authorize, (req, res) => {
-    knex()
-});
+router
+    .route('/meals/:id')
+    .get(scheduleController.singleMeal);
+
+router
+    .route('/exercises')
+    .get(scheduleController.getAllExercises);
 
 module.exports = router;
