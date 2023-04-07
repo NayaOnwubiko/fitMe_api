@@ -44,6 +44,7 @@ exports.login = async (req, res) => {
         })
     }
 
+//Validates the user
     knex("users")
         .where({ email: req.body.email })
         .then(users => {
@@ -54,6 +55,7 @@ exports.login = async (req, res) => {
             }
 
             const foundUser = users[0];
+
             // based on this user we found, we need the password
             const isValidPassword = bcrypt.compareSync(req.body.password, foundUser.password)
 
@@ -70,4 +72,12 @@ exports.login = async (req, res) => {
                 token: token
             })
         })
+};
+
+exports.approve = async (req, res) => {
+    const user = await knex("users")
+        .where( { id: req.user.id })
+        .first();
+        delete user.password;
+        res.json(user);
 };
