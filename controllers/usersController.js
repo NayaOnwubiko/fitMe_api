@@ -76,7 +76,7 @@ exports.login = async (req, res) => {
 
 exports.approve = async (req, res) => {
     const user = await knex("users")
-        .where( { id: req.user.id })
+        .where( { id: req.userId })
         .first();
         delete user.password;
         res.json(user);
