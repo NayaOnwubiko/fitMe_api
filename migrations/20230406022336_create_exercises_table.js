@@ -10,7 +10,8 @@ exports.up = function(knex) {
     table.string("muscle").notNullable();
     table.string("equipment").notNullable();
     table.string("difficulty").notNullable();
-    table.string("instructions", 500).notNullable();
+    table.string("instructions", 5000).notNullable();
+    table.string("image").notNullable();
   });
 };
 

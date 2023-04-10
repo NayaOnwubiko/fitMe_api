@@ -16,4 +16,8 @@ router
     .route('/currentuser')
     .get(authorize, usersController.approve);
 
+router
+    .route('/currentuser/:id/meals')
+    .get(usersController.userMeals);
+
 module.exports = router;
