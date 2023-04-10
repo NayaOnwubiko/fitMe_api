@@ -9,8 +9,9 @@ exports.up = function(knex) {
     table.string("type").notNullable();
     table.string("vegetarian").notNullable();
     table.string("calories").notNullable();
-    table.string("ingredients").notNullable();
-    table.string("preparation", 500).notNullable();
+    table.string("ingredients", 1000).notNullable();
+    table.string("preparation", 1000).notNullable();
+    table.string("image").notNullable();
   });
 };
 
