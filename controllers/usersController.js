@@ -83,9 +83,7 @@ exports.approve = async (req, res) => {
 };
 
 exports.userMeals = async (req, res) => {
-        // If the user is vegetarian, return the vegetarian meals
         await knex("meals")
-        .where({ vegetarian: 'TRUE' })
         .then((data) => {
                 res.status(200).json(data);
         })
