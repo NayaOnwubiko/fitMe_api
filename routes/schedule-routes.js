@@ -14,4 +14,7 @@ router
     .route('/exercises')
     .get(scheduleController.getAllExercises);
 
+router
+    .route('/exercises/:id')
+    .get(scheduleController.singleExercise);
 module.exports = router;

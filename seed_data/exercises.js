@@ -37,7 +37,7 @@ module.exports = [
     difficulty: 'beginner',
     instructions: 'Begin by having a platform or weight plates that you can stand on, usually 1-3 inches in height. Approach the bar so that it is centered over your feet. You feet should be about hip width apart. Bend at the hip to grip the bar at shoulder width, allowing your shoulder blades to protract. Typically, you would use an overhand grip or an over/under grip on heavier sets. With your feet, and your grip set, take a big breath and then lower your hips and bend the knees until your shins contact the bar. Look forward with your head, keep your chest up and your back arched, and begin driving through the heels to move the weight upward. After the bar passes the knees, aggressively pull the bar back, pulling your shoulder blades together as you drive your hips forward into the bar. Lower the bar by bending at the hips and guiding it to the floor.',
     id: 4,
-    image: 'http://localhost:8080/public/images/exercise/beginner/barcell_deficit_deadlift.jpg'
+    image: 'http://localhost:8080/public/images/exercise/beginner/barbell_deficit_deadlift.jpg'
   },
   {
     name: 'Romanian Deadlift With Dumbbells',
@@ -77,7 +77,7 @@ module.exports = [
     difficulty: 'beginner',
     instructions: 'Begin with a shoulder width, double overhand or hook grip, with the bar hanging at the mid thigh position. Your back should be straight and inclined slightly forward. Begin by aggressively extending through the hips, knees and ankles, driving the weight upward. As you do so, shrug your shoulders towards your ears. As full extension is achieved, transition into the final pull by aggressively shrugging and flexing the arms with the elbows up and out. At peak extension, aggressively pull yourself down, rotating your elbows under the bar as you do so. Receive the bar in a front squat position, the depth of which is dependent upon the height of the bar at the end of the third pull. The bar should be racked onto the protracted shoulders, lightly touching the throat with the hands relaxed. Continue to descend to the bottom squat position, which will help in the recovery.3.  Immediately recover by driving through the heels, keeping the torso upright and elbows up. Continue until you have risen to a standing position.',
     id: 8,
-    image: 'http://localhost:8080/public/images/exercise/beginner/hang_clean.jpg'
+    image: 'http://localhost:8080/public/images/exercise/beginner/hang_clean.png'
   },
   {
     name: 'Standing behind-the-back wrist curl',
