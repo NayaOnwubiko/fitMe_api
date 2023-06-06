@@ -3,6 +3,7 @@
 fitMe
 
 fitMe is a web application that provides exercise routines & meal plans for users looking to improve their physical fitness.
+This is my capstone project for my Software Engineering Bootcamp with BrainStation.
 
 # Table of contents
 
